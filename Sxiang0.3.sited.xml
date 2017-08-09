@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?> <!--  热门，目录，正文，图片， -->
+<sited ver="2" debug="1" engine="32" schema="1">
+    <meta>
+    <ua></ua>
+        <title>随想轻小说</title>
+        <intro>日本轻小说,动漫小说网站,免费提供轻小说在线观看</intro>
+        <alert>随想轻小说所有内容均来自国际互联网，仅供学习交流使用，版权为原作者所有！
+    如无意中侵犯到您的权益，或是含有非法内容，请及时与我们联系，我们将在第一时间做出回应！</alert>
+        <author>Hodge</author>
+        <contact>未想好我空着</contact>
+        <url>http://book.suixw.com</url>
+        <expr>\.suixw\.com</expr>
+        <logo></logo>
+        <encode>gbk</encode>
+    </meta>
+    <main dtype="2">
+        <home>
+            <hots cache="1d" title="热门" method="get"  parse="hots_parse" url="http://book.suixw.com/modules/article/index.php"/>
+        </home>
+        <book    cache="1" method="get" parse="book_parse">  <!-- 书本信息 -->
+            <sections cache="1" method="get" buildUrl="sections_buildUrl" parse="sections_parse"/> <!-- 详情目录 -->
+        </book>
+        <section cache="1"  method="get" parse="section_parse" />   <!-- 目录内正文 -->
+    </main>
+    <script>
+        <require>
+            <item url="http://sited.noear.org/addin/js/cheerio.js" lib="cheerio" />
+        </require>
+		<code>
+        <![CDATA[
+
+function urla(u) {
+    var host = "http://m.sfacg.com";
+    if (u.indexOf("http")<0) {
+        u = host + u;
+    }
+    return encodeURI(u);
+}
+function dong(url,html) {
+    var $ = cheerio.load(html);  
+    var list = [];
+
+    $("div[style='width:90px;float:left;'] a img").each(function() {
+        var img = $(this);
+        var bm = {};
+        bm.name = img.parent().attr("title");
+        bm.url  = img.parent().attr("href");
+        bm.logo = img.attr('src');
+
+        list.push(bm);
+    });
+    return list;
+}
+function hots_parse(url,html) {
+	var list = dong(url,html);
+    return JSON.stringify(list);
+}
+function sections_buildUrl(url) {
+    return url.replace("articleinfo","reader").replace("id","aid");
+}
+function book_parse(url, html) {
+    html = html.replace("内容简介：</span>","内容简介：</span><a class='jianjie'>");
+    html = html.replace("主要角色：</span>","</a>");
+    var $ = cheerio.load(html);
+    var data = {};
+    
+    data.name = "";
+    data.author = $("tr td[width='25%']").eq(1).text();
+    data.logo = '';
+    data.updateTime = '';
+    data.intro = $("a.jianjie").text();
+    data.isSectionsAsc=1;
+
+    data.sections = [];
+     
+    return JSON.stringify(data);
+}
+function sections_parse(url, html) {
+    var $ = cheerio.load(html);
+    var data = {};
+    data.sections = [];
+    $("tr").each(function()
+    {
+        var slf = $(this);
+        if(slf.children().eq(0).attr("class")=="vcss")
+        {
+            data.sections.push({url:'',name: slf.children().eq(0).text().trim()});
+        }
+        else
+        {
+            var ddd = slf;
+            ddd.find('a').each(function()
+            {
+                var item = $(this);
+                var sm = {url: item.attr('href'),name: item.text().trim()};
+                
+                data.sections.push(sm);
+                });
+        }
+    });
+    return JSON.stringify(data);
+}
+
+function section_parse(url,html) {
+
+    var $ = cheerio.load(html);
+    var c = $('#content');
+    
+    var list = [];
+    list.push({d:c.text().trim(),t:1});
+
+    $("div.divimage img").each(function()
+    {
+        var img = $(this);
+        list.push({d:img.attr('src'),t:9});
+    });
+    return JSON.stringify(list);
+}
+    ]]>
+		</code>
+    </script>
+</sited>
