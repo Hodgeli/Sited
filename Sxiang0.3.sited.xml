@@ -17,10 +17,10 @@
         <home>
             <hots cache="1d" title="热门" method="get"  parse="hots_parse" url="http://book.suixw.com/modules/article/index.php"/>
         </home>
-        <book    cache="1" method="get" parse="book_parse">  <!-- 书本信息 -->
-            <sections cache="1" method="get" buildUrl="sections_buildUrl" parse="sections_parse"/> <!-- 详情目录 -->
+        <book    cache="1" method="get" parse="book_parse">  
+            <sections cache="1" method="get" buildUrl="sections_buildUrl" parse="sections_parse"/> 
         </book>
-        <section cache="1"  method="get" parse="section_parse" />   <!-- 目录内正文 -->
+        <section cache="1"  method="get" parse="section_parse" />   
     </main>
     <script>
         <require>
