@@ -7,7 +7,6 @@
         <alert>随想轻小说所有内容均来自国际互联网，仅供学习交流使用，版权为原作者所有！
     如无意中侵犯到您的权益，或是含有非法内容，请及时与我们联系，我们将在第一时间做出回应！</alert>
         <author>Hodge</author>
-        <contact>未想好我空着</contact>
         <url>http://book.suixw.com</url>
         <expr>\.suixw\.com</expr>
         <logo></logo>
@@ -15,17 +14,26 @@
         <about title="反馈" mail="2991811241@qq.com">
             <item url="我的邮箱是2991811241@qq.com" />
             <item />
-            <item txt="感谢您对此插件的支持"  />
+            <item txt="感谢您对此插件开发者的支持"  />
         </about>
     </meta>
     <main dtype="2">
         <home>
             <hots cache="1d" title="热门" method="get"  parse="hots_parse" url="http://book.suixw.com/modules/article/index.php"/>
+            <tags  title="分类">
+                <item title="电击文库" url="http://book.suixw.com/modules/article/articlelist.php?class=1&amp;page=@page" />
+                <item title="富士见文库" url="http://book.suixw.com/modules/article/articlelist.php?class=2&amp;page=@page" />
+                <item title="角川文库" url="http://book.suixw.com/modules/article/articlelist.php?class=3&amp;page=@page" />
+                <item title="MF文库J" url="http://book.suixw.com/modules/article/articlelist.php?class=4&amp;page=@page" />
+                <item title="Fami通文库" url="http://book.suixw.com/modules/article/articlelist.php?class=5&amp;page=@page" />
+                <item title="其他文库" url="http://book.suixw.com/modules/article/articlelist.php?class=6&amp;page=@page" />
+            </tags>
         </home>
-        <book    cache="1" method="get" parse="book_parse">  
+        <tag cache="0" method="get" parse="hots_parse" />
+        <book cache="1" method="get" parse="book_parse">  
             <sections cache="1" method="get" buildUrl="sections_buildUrl" parse="sections_parse"/> 
         </book>
-        <section cache="1"  method="get" parse="section_parse" />   
+        <section cache="1" method="get" parse="section_parse" />   
     </main>
     <script>
         <require>
