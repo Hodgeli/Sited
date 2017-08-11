@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sited ver="2" debug="1" engine="32" schema="1">
+    <meta>
+        <ua></ua>
+        <title>YYLS漫画</title>
+        <intro>漫画聚集地</intro>
+        <alert>《監獄學園》暂时无法观看</alert>
+        <author>Hodge</author>
+        <url>http://8comic.se/</url>
+        <expr>8comic\.se</expr>
+        <logo></logo>
+        <encode>UTF-8</encode>
+        <about title="反馈" mail="2991811241@qq.com">
+            <item url="我的邮箱是2991811241@qq.com" />
+            <item />
+            <item txt="感谢您对此插件开发者的支持"  />
+        </about>
+    </meta>
+    <main dtype="1">
+        <home>
+            <hots cache="1d" title="连载" method="get"  parse="hots_parse" url="http://8comic.se/"/>
+            <tags  title="分类">
+                <item title="冒险" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%86%92%E9%9A%AA/page/@page/" />
+                <item title="格斗" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%A0%BC%E9%AC%A5/page/@page/" />
+                <item title="科幻" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E7%A7%91%E5%B9%BB/page/@page/" />
+                <item title="竞技" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E7%AB%B6%E6%8A%80/page/@page/" />
+                <item title="侦探" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%81%B5%E6%8E%A2/page/@page/" />
+                <item title="恐怖" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%81%90%E6%80%96/page/@page/" />
+                <item title="战国" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%88%B0%E5%9C%8B/page/@page/" />
+                <item title="搞笑" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%90%9E%E7%AC%91/page/@page/" />
+                <item title="校园" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%A0%A1%E5%9C%92/page/@page/" />
+                <item title="港产" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E6%B8%AF%E7%94%A2/page/@page/" />
+                <item title="魔幻" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E9%AD%94%E5%B9%BB/page/@page/" />
+                <item title="魔法" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E9%AD%94%E6%B3%95/page/@page/" />
+                <item title="少女" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%B0%91%E5%A5%B3/page/@page/" />
+                <item title="少男" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%B0%91%E7%94%B7/page/@page/" />
+                <item title="其他" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%85%B6%E4%BB%96/page/@page/" />
+            </tags>
+        </home>
+        <tag cache="0" method="get" parse="hots_parse" />
+        <book cache="1" method="get" parse="book_parse" />  
+        <section cache="1" method="get" parse="section_parse" />
+    </main>
+    <script>
+        <require>
+            <item url="http://sited.noear.org/addin/js/cheerio.js" lib="cheerio" />
+        </require>
+        <code>
+        <![CDATA[
+
+function hots_parse(url,html) 
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+    var c = $("[class='nag cf']");
+    c.find("a.clip-link").each(function()
+    {
+        var a=$(this);
+        var bm = {};
+        bm.name = a.attr("title");
+        bm.url = a.attr("href");
+        bm.logo = a.children().children().attr("src");
+        
+        list.push(bm);
+    });
+    return JSON.stringify(list);
+}
+
+function book_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+    var data = {};
+
+    data.name = "";
+    data.author = "";
+    data.logo = "";
+    data.updateTime = "";
+    data.intro = $("td[colspan='3']").children().eq(1).text();
+    data.isSectionsAsc = 1;
+    
+    data.sections = [];
+    $("tr td center b").parent().parent().attr("colspan","3");
+    $("tr").each(function()
+    {
+        var tr=$(this);
+        if(tr.children().eq(0).attr("colspan")=='5')
+        {
+            var b = {name: tr.children("td[colspan='5']").text(),url: ""};
+            data.sections.push(b);
+        }else if (tr.children().eq(0).attr("width")=='20%')
+        {
+            tr.children().each(function()
+            {
+                var td=$(this);
+                if(td.attr("width")=='20%')
+                {
+                    var bb = {url: td.children().eq(0).attr("href"),name: td.children().eq(0).text()};
+                    data.sections.push(bb);
+                }
+            })
+        }
+    });
+    return JSON.stringify(data);
+}
+
+function section_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+    var list = [];
+    var i=0;
+    var url = new String();
+    var n;
+    $("img.alignnone").each(function()
+    {
+        var img = $(this);
+        url = img.attr("src")
+    })
+    $("select#pull").children().each(function()
+    {
+        i++;
+        var arrUrl = url.split("/");
+        var houZhui = arrUrl[8].split(".");
+        
+        var finalUrl="http:";
+        for(n=1;n<arrUrl.length-1;n++)
+        {
+            finalUrl +="/"+arrUrl[n];
+        }
+        if(i>0&&i<10)
+        {
+            finalUrl += "/00"+i+"."+houZhui[1];
+        }else if (i>9&&i<100) 
+        {
+            finalUrl += "/0"+i+"."+houZhui[1];
+        }else
+        {
+            finalUrl += "/"+i+"."+houZhui[1];
+        }
+        list.push(finalUrl);
+    })
+    return JSON.stringify(list);
+}
+    ]]>
+        </code>
+    </script>
+</sited>
