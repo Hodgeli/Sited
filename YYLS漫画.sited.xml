@@ -4,7 +4,7 @@
         <ua></ua>
         <guid>370a8b9e29f3682c9008f53e16329dae</guid>
         <title>YYLS漫画</title>
-        <intro>漫画聚集地</intro>
+        <intro>枫林网门下的漫画聚集地，分类齐全，数量多</intro>
         <alert>网站原因，漫画加载稍慢，不影响阅读。</alert>
         <author>Hodge</author>
         <url>http://8comic.se/</url>
@@ -16,7 +16,7 @@
             <item />
             <item />
 
-            <item txt="点击或扫描二维码对[❤❤舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
+            <item txt="点击或扫描二维码对[❤海舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
             <item />
             <item />
         </about>
@@ -103,7 +103,7 @@ function book_parse(url, html)
                     var bb = {url: td.children().eq(0).attr("href"),name: td.children().eq(0).text()};
                     data.sections.push(bb);
                 }
-            })
+            });
         }
     });
     data.sections.reverse();
@@ -115,11 +115,9 @@ function section_parse(url, html)
     var $ = cheerio.load(html);
     var list = [];
     var i=0;
-    var url = new String();
     var n;
-    var img = $(this);
-    url = $("img.alignnone").attr("src");
-    var arrUrl = url.split("/");
+    var picUrl = $("img.alignnone").attr("src");
+    var arrUrl = picUrl.split("/");
     $("select#pull").children().each(function()
     {
         i++;
@@ -142,7 +140,7 @@ function section_parse(url, html)
             finalUrl += "/"+i+"."+houZhui[1];
         }
         list.push(finalUrl);
-    })
+    });
     return JSON.stringify(list);
 }
 
@@ -159,7 +157,7 @@ function search_parse(url,html)
         bm.logo="";
         
         list.push(bm);
-    })
+    });
     return JSON.stringify(list);
 }
     ]]>
