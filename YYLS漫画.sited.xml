@@ -2,8 +2,10 @@
 <sited ver="2" debug="1" engine="32" schema="1">
     <meta>
         <ua></ua>
+        <guid>370a8b9e29f3682c9008f53e16329dae</guid>
         <title>YYLS漫画</title>
         <intro>漫画聚集地</intro>
+        <alert>网站原因，漫画加载稍慢，不影响阅读。</alert>
         <author>Hodge</author>
         <url>http://8comic.se/</url>
         <expr>8comic\.se</expr>
@@ -12,7 +14,11 @@
         <about title="反馈" mail="2991811241@qq.com">
             <item url="我的邮箱是2991811241@qq.com" />
             <item />
-            <item txt="感谢您对此插件开发者的支持"  />
+            <item />
+
+            <item txt="点击或扫描二维码对[❤❤舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="https://thumbnail0.baidupcs.com/thumbnail/52c1f356c3300a6dba75d16faa1fdc6d?fid=2789026365-250528-619377149588720&amp;time=1502607600&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-kXszzNZROrp5URP%2FGyvNhBgwrFU%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=5209898463051605475&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video"/>
+            <item />
+            <item />
         </about>
     </meta>
     <main dtype="1">
