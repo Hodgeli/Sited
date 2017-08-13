@@ -16,7 +16,7 @@
             <item />
             <item />
 
-            <item txt="点击或扫描二维码对[❤❤舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="https://thumbnail0.baidupcs.com/thumbnail/52c1f356c3300a6dba75d16faa1fdc6d?fid=2789026365-250528-619377149588720&amp;time=1502607600&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-kXszzNZROrp5URP%2FGyvNhBgwrFU%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=5209898463051605475&amp;dp-callid=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video"/>
+            <item txt="点击或扫描二维码对[❤❤舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
             <item />
             <item />
         </about>
@@ -42,8 +42,9 @@
                 <item title="其他" url="http://8comic.se/category/%E6%BC%AB%E7%95%AB%E5%88%86%E9%A1%9E/%E5%85%B6%E4%BB%96/page/@page/" />
             </tags>
         </home>
+        <search  cache="1d" method="get" parse="search_parse" url="http://8comic.se/搜尋結果/?w=@key" />
         <tag cache="0" method="get" parse="hots_parse" />
-        <book cache="1" method="get" parse="book_parse" />  
+        <book cache="0" expr="http://\/\d+\/{0,1}" method="get" parse="book_parse" />  
         <section cache="1" method="get" parse="section_parse" />
     </main>
     <script>
@@ -78,7 +79,7 @@ function book_parse(url, html)
 
     data.name = "";
     data.author = "";
-    data.logo = "";
+    data.logo = $("img").attr("src");
     data.updateTime = "";
     data.intro = $("td[colspan='3']").children().eq(1).text();
     data.isSectionsAsc = 0;
@@ -105,6 +106,7 @@ function book_parse(url, html)
             })
         }
     });
+    data.sections.reverse();
     return JSON.stringify(data);
 }
 
@@ -140,6 +142,23 @@ function section_parse(url, html)
             finalUrl += "/"+i+"."+houZhui[1];
         }
         list.push(finalUrl);
+    })
+    return JSON.stringify(list);
+}
+
+function search_parse(url,html) 
+{
+    var $ = cheerio.load(html);
+    var list = [];
+    $("ul.post-list-full").eq(0).children().each(function()
+    {
+        var bm = {};
+        var a = $(this);
+        bm.name=a.text();
+        bm.url="http://8comic.se"+a.find("a").attr("href");
+        bm.logo="";
+        
+        list.push(bm);
     })
     return JSON.stringify(list);
 }
