@@ -4,7 +4,6 @@
         <ua></ua>
         <title>YYLS漫画</title>
         <intro>漫画聚集地</intro>
-        <alert>《監獄學園》暂时无法观看</alert>
         <author>Hodge</author>
         <url>http://8comic.se/</url>
         <expr>8comic\.se</expr>
@@ -76,7 +75,7 @@ function book_parse(url, html)
     data.logo = "";
     data.updateTime = "";
     data.intro = $("td[colspan='3']").children().eq(1).text();
-    data.isSectionsAsc = 1;
+    data.isSectionsAsc = 0;
     
     data.sections = [];
     $("tr td center b").parent().parent().attr("colspan","3");
@@ -110,22 +109,20 @@ function section_parse(url, html)
     var i=0;
     var url = new String();
     var n;
-    $("img.alignnone").each(function()
-    {
-        var img = $(this);
-        url = img.attr("src")
-    })
+    var img = $(this);
+    url = $("img.alignnone").attr("src");
+    var arrUrl = url.split("/");
     $("select#pull").children().each(function()
     {
         i++;
-        var arrUrl = url.split("/");
-        var houZhui = arrUrl[8].split(".");
+        var houZhui = arrUrl[arrUrl.length-1].split(".");
         
         var finalUrl="http:";
         for(n=1;n<arrUrl.length-1;n++)
         {
             finalUrl +="/"+arrUrl[n];
         }
+         
         if(i>0&&i<10)
         {
             finalUrl += "/00"+i+"."+houZhui[1];
