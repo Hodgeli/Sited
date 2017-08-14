@@ -43,8 +43,8 @@
             </tags>
         </home>
         <search  cache="1d" method="get" parse="search_parse" url="http://8comic.se/搜尋結果/?w=@key" />
-        <tag cache="0" method="get" parse="hots_parse" />
-        <book cache="0" expr="http://\/\d+\/{0,1}" method="get" parse="book_parse" />  
+        <tag cache="0" method="get" parse="tag_parse" />
+        <book cache="0" expr="8comic\.se\/\d+" method="get" parse="book_parse" />  
         <section cache="1" method="get" parse="section_parse" />
     </main>
     <script>
@@ -72,12 +72,30 @@ function hots_parse(url,html)
     return JSON.stringify(list);
 }
 
+function tag_parse(url, html)
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+    var c = $("[class='nag cf']");
+    c.find("a.clip-link").each(function()
+    {
+        var a=$(this);
+        var bm = {};
+        bm.name = a.attr("title");
+        bm.url = a.attr("href");
+        bm.logo = a.children().children().attr("src");
+        
+        list.push(bm);
+    });
+    return JSON.stringify(list);
+}
+
 function book_parse(url, html) 
 {
     var $ = cheerio.load(html);
     var data = {};
 
-    data.name = "";
+    data.name = $(".entry-title").text();
     data.author = "";
     data.logo = $("img").attr("src");
     data.updateTime = "";
