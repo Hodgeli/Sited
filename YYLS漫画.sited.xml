@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sited ver="2" debug="1" engine="32" schema="1">
+<sited ver="3" debug="1" engine="32" schema="1">
     <meta>
         <ua></ua>
         <guid>370a8b9e29f3682c9008f53e16329dae</guid>
@@ -178,7 +178,7 @@ function search_parse(url,html)
     });
     return JSON.stringify(list);
 }
-    ]]>
+        ]]>
         </code>
     </script>
 </sited>
