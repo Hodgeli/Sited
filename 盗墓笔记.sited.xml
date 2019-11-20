@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sited ver="2" debug="0" engine="32" schema="1">
+    <meta>
+        <ua></ua>
+        <guid>370a8b9e29f3682c9008f53e16329dae</guid>
+        <title>盗墓笔记</title>
+        <intro>盗墓笔记全系列，三叔各种坑全聚合</intro>
+        <alert>该站转载作品，是为了宣传本书，提倡稻米购买实体书。若侵犯到您的权益，请联系该站。</alert>
+        <author>Hodge</author>
+        <url>http://www.daomubiji.org/</url>
+        <expr>\.daomubiji\.org/</expr>
+        <logo>http://wx4.sinaimg.cn/mw690/d2b70dd6gy1fk9zf5cinsj20p00gonlk.jpg</logo>
+        <encode>UTF-8</encode>
+        <about title="反馈" mail="2991811241@qq.com">
+            <item url="我的邮箱是2991811241@qq.com" />
+            <item />
+            <item />
+            <item txt="点击或扫描二维码对[❤海舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
+            <item />
+            <item />
+        </about>
+    </meta>
+    <main dtype="2">
+        <home>
+            <hots cache="1" title="欢迎稻米回家" method="get"  parse="hots_parse" url="http://www.daomubiji.org/"/>
+        </home>
+        <book cache="1d" method="get" parse="book_parse" />  
+        <section cache="1" method="get" parse="section_parse" />
+    </main>
+    <script>
+        <require>
+            <item url="http://sited.noear.org/addin/js/cheerio.js" lib="cheerio" />
+        </require>
+		<code>
+        <![CDATA[
+
+function hots_parse(url,html) 
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+
+    $("center a").each(function() 
+    {
+        var a = $(this);
+        var bm = {};
+        if(a.text()!="首页"&a.text()!="盗墓笔记9"&a.text()!="大漠苍狼"&a.text()!="怒江之战"&a.text()!="作品集"&a.text()!="盗墓笔记全集"&a.text()!="盗墓笔记大结局"&a.text()!="盗墓笔记后记"&a.text()!="圣雪寻踪"&a.text()!="盗墓笔记txt下载"&a.text()!="阅读顺序")
+        {
+            bm.name = a.text();
+            bm.url  = a.attr("href");
+            bm.logo = "http://wx2.sinaimg.cn/mw690/d2b70dd6gy1fk9zxc0lvoj208h0anaeb.jpg";
+            list.push(bm);
+        }
+    });
+    return JSON.stringify(list);
+}
+
+function book_parse(url,html)
+{
+    var $ = cheerio.load(html);
+    var data = {};
+    
+    data.name = $("div.bg h1").text();
+    data.author = "南派三叔";
+    data.logo = "";
+    data.updateTime = "";
+    data.intro = $("p[style='text-indent:2em;']").eq(0).text();
+    data.isSectionsAsc= 0;
+
+    data.sections = [];
+    $(".panel ul").children().each(function() 
+    {
+       var li = $(this);
+        data.sections.push({url:li.find("a").attr("href"),name:li.find("a").text().trim()}); 
+    });
+    data.sections.reverse();
+    return JSON.stringify(data);
+}
+
+function section_parse(url,html)
+{
+    var $ = cheerio.load(html);
+    var list = [];
+
+    var p = $(".shangxia").eq(0)
+		
+    while(1)
+    {
+        p = p.next()
+        if(p.attr('class') == "weixin")
+        {
+            break;
+        }
+        else
+        {
+            list.push({d:p.text().trim(),t:1});
+        }
+    }
+
+    return JSON.stringify(list);
+}
+    ]]>
+		</code>
+    </script>
+</sited>

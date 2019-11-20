@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sited ver="1" debug="0" engine="32" schema="1">
+    <meta>
+        <ua></ua>
+        <guid>370a8b9e29f3682c9008f53e16329dae</guid>
+        <title>科幻小说网</title>
+        <intro>经典科幻小说</intro>
+        <alert></alert>
+        <author>Hodge</author>
+        <url>http://www.kehuan.net.cn/</url>
+        <expr>kehuan\.net\.cn</expr>
+        <logo></logo>
+        <encode>UTF-8</encode>
+        <about title="反馈" mail="2991811241@qq.com">
+            <item url="我的邮箱是2991811241@qq.com" />
+            <item />
+            <item />
+
+            <item txt="点击或扫描二维码对[❤海舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
+            <item />
+            <item />
+        </about>
+    </meta>
+    <main dtype="2">
+        <home>
+            <hots cache="1d" title="推荐" method="get"  parse="hots_parse" url="http://www.kehuan.net.cn/commend.html"/>
+            <tags  title="分类">
+                <item title="中国科幻小说" url="http://www.kehuan.net.cn/book-china-@page.html" />
+                <item title="外国科幻小说" url="http://www.kehuan.net.cn/book-foreign-@page.html" />
+            </tags>
+        </home>
+        <tag cache="0" method="get" parse="tag_parse" />
+        <book cache="0" expr="kehuan\.net\.cn/\d+" method="get" parse="book_parse" />  
+        <section cache="1" method="get" parse="section_parse" />
+    </main>
+    <script>
+        <require>
+            <item url="http://sited.noear.org/addin/js/cheerio.js" lib="cheerio" />
+        </require>
+        <code>
+        <![CDATA[
+function hots_parse(url,html) 
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+
+    $(".topbox ul li").each(function() 
+		{
+			var bm = {}
+			var li = $(this);
+
+            bm.name = li.children('a').eq(0).attr('title')
+			var url = li.children('a').eq(0).attr('href')
+			url = 'http://www.kehuan.net.cn' + url
+			bm.url = url
+            bm.logo = null
+            list.push(bm);
+		});
+    return JSON.stringify(list);
+}
+function tag_parse(url, html)
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+
+    $(".leftbox ul li").each(function() 
+		{
+            var bm = {}
+			var li = $(this);
+
+			bm.name = li.children('a').eq(0).attr('title')
+			var url = li.children('a').eq(0).attr('href')
+			url = 'http://www.kehuan.net.cn' + url
+			bm.url = url
+            bm.logo = null
+            list.push(bm);
+		});
+
+    return JSON.stringify(list);
+}
+function book_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+    var data = {};
+
+    data.name = $('.book h1').text()
+    data.author = $('.book h2 a').text()
+    data.logo = null
+    data.updateTime = "";
+    data.intro = $('.description p').eq(0).text()
+    data.isSectionsAsc = 0;
+    
+    data.sections = [];
+
+    $(".book dl").each(function() 
+    {
+        var dl = $(this)
+        data.sections.push({url:"",name:dl.children('dt').text()}); 
+        dl.children('dd').each(function()
+        {
+            var dd = $(this)
+            var url_sections = dd.children('a').attr('href')
+            url_sections = 'http://www.kehuan.net.cn' + url_sections
+            data.sections.push({url:url_sections,name:dd.children('a').text()}); 
+        });
+    });
+
+    if ((data.sections.length) == 0)
+    {
+        data.sections.push({url:url,name:"开始阅读"}); 
+    }
+    data.sections.reverse();
+    return JSON.stringify(data);
+}
+function section_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+    var list = [];
+
+    $(".text p").each(function() 
+    {
+        var p = $(this)
+        list.push({d:p.text().trim(),t:1});
+    });
+
+    return JSON.stringify(list);
+}
+        ]]>
+        </code>
+    </script>
+</sited>
