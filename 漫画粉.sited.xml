@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sited ver="1" debug="0" engine="32" schema="1">
+    <meta>
+        <ua></ua>
+        <guid></guid>
+        <title>漫画粉</title>
+        <intro>漫画粉 - 属于你的漫画乐园！</intro>
+        <alert>善用搜索，慢是网站原因，耐心。</alert>
+        <author>Hodge</author>
+        <url>https://www.manhuafen.com/</url>
+        <expr>\.manhuafen\.com</expr>
+        <logo></logo>
+        <encode>UTF-8</encode>
+        <about title="反馈" mail="2991811241@qq.com">
+            <item url="我的邮箱是2991811241@qq.com" />
+            <item />
+            <item />
+
+            <item txt="点击或扫描二维码对[❤海舟]支付宝打赏"  expr="https://qr.alipay.com/FKX07943JM5MTQXW4QVEBC" logo="http://wx4.sinaimg.cn/large/d2b70dd6gy1fii4w3dctoj20pd0swad8.jpg"/>
+            <item />
+            <item />
+        </about>
+    </meta>
+    <main dtype="1">
+        <home>
+            <tags  title="分类">
+                <item title="全部" url="https://www.manhuafen.com/list/@page/" />
+                <item title="热血" url="https://www.manhuafen.com/list/rexue/@page/" />
+                <item title="冒险" url="https://www.manhuafen.com/list/maoxian/@page/" />
+                <item title="玄幻" url="https://www.manhuafen.com/list/xuanhuan/@page/" />
+                <item title="搞笑" url="https://www.manhuafen.com/list/gaoxiao/@page/" />
+                <item title="恋爱" url="https://www.manhuafen.com/list/lianai/@page/" />
+                <item title="宠物" url="https://www.manhuafen.com/list/chongwu/@page/" />
+                <item title="新作" url="https://www.manhuafen.com/list/xinzuo/@page/" />
+                <item title="神魔" url="https://www.manhuafen.com/list/shenmo/@page/" />
+                <item title="竞技" url="https://www.manhuafen.com/list/jingji/@page/" />
+                <item title="穿越" url="https://www.manhuafen.com/list/chuanyue/@page/" />
+                <item title="漫改" url="https://www.manhuafen.com/list/mangai/@page/" />
+                <item title="霸总" url="https://www.manhuafen.com/list/bazong/@page/" />
+                <item title="都市" url="https://www.manhuafen.com/list/dushi/@page/" />
+                <item title="武侠" url="https://www.manhuafen.com/list/wuxia/@page/" />
+                <item title="社会" url="https://www.manhuafen.com/list/shehui/@page/" />
+                <item title="古风" url="https://www.manhuafen.com/list/gufeng/@page/" />
+                <item title="恐怖" url="https://www.manhuafen.com/list/kongbu/@page/" />
+                <item title="东方" url="https://www.manhuafen.com/list/dongfang/@page/" />
+                <item title="格斗" url="https://www.manhuafen.com/list/gedou/@page/" />
+                <item title="魔法" url="https://www.manhuafen.com/list/mofa/@page/" />
+                <item title="轻小说" url="https://www.manhuafen.com/list/qingxiaoshuo/@page/" />
+                <item title="魔幻" url="https://www.manhuafen.com/list/mohuan/@page/" />
+                <item title="生活" url="https://www.manhuafen.com/list/shenghuo/@page/" />
+                <item title="欢乐向" url="https://www.manhuafen.com/list/huanlexiang/@page/" />
+                <item title="励志" url="https://www.manhuafen.com/list/lizhi/@page/" />
+                <item title="音乐舞蹈" url="https://www.manhuafen.com/list/yinyuewudao/@page/" />
+                <item title="科幻" url="https://www.manhuafen.com/list/kehuan/@page/" />
+                <item title="美食" url="https://www.manhuafen.com/list/meishi/@page/" />
+                <item title="节操" url="https://www.manhuafen.com/list/jiecao/@page/" />
+                <item title="神鬼" url="https://www.manhuafen.com/list/shengui/@page/" />
+                <item title="爱情" url="https://www.manhuafen.com/list/aiqing/@page/" />
+                <item title="校园" url="https://www.manhuafen.com/list/xiaoyuan/@page/" />
+                <item title="治愈" url="https://www.manhuafen.com/list/zhiyu/@page/" />
+                <item title="奇幻" url="https://www.manhuafen.com/list/qihuan/@page/" />
+                <item title="仙侠" url="https://www.manhuafen.com/list/xianxia/@page/" />
+                <item title="运动" url="https://www.manhuafen.com/list/yundong/@page/" />
+                <item title="动作" url="https://www.manhuafen.com/list/dongzuo/@page/" />
+                <item title="日更" url="https://www.manhuafen.com/list/rigeng/@page/" />
+                <item title="历史" url="https://www.manhuafen.com/list/lishi/@page/" />
+                <item title="推理" url="https://www.manhuafen.com/list/tuili/@page/" />
+                <item title="悬疑" url="https://www.manhuafen.com/list/xuanyi/@page/" />
+                <item title="修真" url="https://www.manhuafen.com/list/xiuzhen/@page/" />
+                <item title="游戏" url="https://www.manhuafen.com/list/youxi/@page/" />
+                <item title="战争" url="https://www.manhuafen.com/list/zhanzheng/@page/" />
+                <item title="后宫" url="https://www.manhuafen.com/list/hougong/@page/" />
+                <item title="职场" url="https://www.manhuafen.com/list/zhichang/@page/" />
+                <item title="四格" url="https://www.manhuafen.com/list/sige/@page/" />
+                <item title="性转换" url="https://www.manhuafen.com/list/xingzhuanhuan/@page/" />
+                <item title="伪娘" url="https://www.manhuafen.com/list/weiniang/@page/" />
+                <item title="颜艺" url="https://www.manhuafen.com/list/yanyi/@page/" />
+                <item title="真人" url="https://www.manhuafen.com/list/zhenren/@page/" />
+                <item title="杂志" url="https://www.manhuafen.com/list/zazhi/@page/" />
+                <item title="侦探" url="https://www.manhuafen.com/list/zhentan/@page/" />
+                <item title="萌系" url="https://www.manhuafen.com/list/mengxi/@page/" />
+                <item title="耽美" url="https://www.manhuafen.com/list/danmei/@page/" />
+                <item title="百合" url="https://www.manhuafen.com/list/baihe/@page/" />
+                <item title="西方魔幻" url="https://www.manhuafen.com/list/xifangmohuan/@page/" />
+                <item title="机战" url="https://www.manhuafen.com/list/jizhan/@page/" />
+                <item title="宅系" url="https://www.manhuafen.com/list/zhaixi/@page/" />
+                <item title="忍者" url="https://www.manhuafen.com/list/renzhe/@page/" />
+                <item title="萝莉" url="https://www.manhuafen.com/list/luoli/@page/" />
+                <item title="异世界" url="https://www.manhuafen.com/list/yishijie/@page/" />
+                <item title="吸血" url="https://www.manhuafen.com/list/xixie/@page/" />
+                <item title="其他" url="https://www.manhuafen.com/list/qita/@page/" />
+                <item title="战斗" url="https://www.manhuafen.com/list/zhandou/@page/" />
+                <item title="唯美" url="https://www.manhuafen.com/list/weimei/@page/" />
+                <item title="恶搞" url="https://www.manhuafen.com/list/egao/@page/" />
+                <item title="幻想" url="https://www.manhuafen.com/list/huanxiang/@page/" />
+                <item title="剧情" url="https://www.manhuafen.com/list/juqing/@page/" />
+                <item title="御姐" url="https://www.manhuafen.com/list/yujie/@page/" />
+                <item title="体育" url="https://www.manhuafen.com/list/tiyu/@page/" />
+                <item title="舰娘" url="https://www.manhuafen.com/list/jianniang/@page/" />
+                <item title="纯爱" url="https://www.manhuafen.com/list/chunai/@page/" />
+                <item title="虐心" url="https://www.manhuafen.com/list/nuexin/@page/" />
+                <item title="高清单行" url="https://www.manhuafen.com/list/gaoqingdanxing/@page/" />
+                <item title="其他热门漫画" url="https://www.manhuafen.com/list/qitaremenmanhua/@page/" />
+                <item title="漫客栈" url="https://www.manhuafen.com/list/mankezhan/@page/" />
+                <item title="霸道总裁" url="https://www.manhuafen.com/list/badaozongcai/@page/" />
+                <item title="薇薇原创" url="https://www.manhuafen.com/list/weiweiyuanchuang/@page/" />
+                <item title="惊悚" url="https://www.manhuafen.com/list/jingsong/@page/" />
+                <item title="知音漫客" url="https://www.manhuafen.com/list/zhiyinmanke/@page/" />
+                <item title="飒飒动漫" url="https://www.manhuafen.com/list/sasadongman/@page/" />
+                <item title="明星" url="https://www.manhuafen.com/list/mingxing/@page/" />
+                <item title="动画" url="https://www.manhuafen.com/list/donghua/@page/" />
+                <item title="精品" url="https://www.manhuafen.com/list/jingpin/@page/" />
+                <item title="秀吉" url="https://www.manhuafen.com/list/xiuji/@page/" />
+            </tags>
+        </home>
+        <search  cache="1d" method="get" parse="search_parse" url="https://www.manhuafen.com/search/?keywords=@key" />
+        <tag cache="0" method="get" parse="tag_parse" />
+        <book cache="0" expr="manhuafen\.comn/\d+" method="get" parse="book_parse" />  
+        <section cache="1" method="get" parse="section_parse" />
+    </main>
+    <script>
+        <require>
+            <item url="http://sited.noear.org/addin/js/cheerio.js" lib="cheerio" />
+            <item url="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"/>
+        </require>
+        <code>
+        <![CDATA[
+function tag_parse(url, html)
+{
+    var $ = cheerio.load(html);  
+    var list = [];
+
+    $("#w0 .list_con_li li").each(function() 
+		{
+            var bm = {}
+			var li = $(this);
+
+            var h3 = li.children('span').children("h3")
+			bm.name = h3.text()
+			bm.url = h3.children().attr("href")
+            bm.logo = li.children('a').children('img').attr("src")
+            bm.author = li.children('span').children("p").eq(0).text().split("：")[1]
+            bm.status = li.children('span').children("p").eq(2).text()
+            bm.newSection = li.children('span').children("p").eq(3).text()
+            list.push(bm);
+		});
+
+    return JSON.stringify(list);
+}
+function book_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+    var data = {};
+
+    data.name = $("h1").text()
+    data.author = $(".comic_deCon_liO").children("li").eq(0).children("a").text()
+    data.logo = $(".comic_i_img").children().attr("src")
+    data.updateTime = "";
+    data.intro = $(".comic_deCon_d").eq(0).text().split("漫画简介：")[1].trim()
+    data.isSectionsAsc = 0;
+    
+    data.sections = [];
+
+    $(".zj_list.autoHeight").each(function() 
+    {
+        var div = $(this)
+
+        if(div.children().hasClass("zj_list_head"))
+        {
+            data.sections.push({url:"",name:div.children(".zj_list_head").children().children().text()});
+            div.children(".zj_list_con.autoHeight").children('ul').children('li').each(function()
+            {
+                var li = $(this)
+                var url = li.children().attr("href")
+                url = "https://www.manhuafen.com" + url
+                data.sections.push({url:url,name:li.children().attr("title")});
+
+            })
+        }
+    });
+
+    data.sections.reverse();
+    return JSON.stringify(data);
+}
+function section_parse(url, html) 
+{
+    var $ = cheerio.load(html);
+
+    var str = $(".mainNav.independNav").next()[0].children[0].data
+    var chapters = str.match('chapterImages = "(.*?)";')[1]
+    // console.log(ss);
+    var list = 
+    JSON.parse
+    (
+        CryptoJS.AES.decrypt
+        (
+            chapters, CryptoJS.enc.Utf8.parse("123456781234567G"), 
+            { 
+                iv: CryptoJS.enc.Utf8.parse('ABCDEF1G34123412'), 
+                mode: CryptoJS.mode.CBC, 
+                padding: CryptoJS.pad.Pkcs7 
+            }
+        ).toString(CryptoJS.enc.Utf8)
+    )
+
+    return JSON.stringify(list);
+}
+function search_parse(url,html) 
+{
+    var $ = cheerio.load(html);
+    var list = [];
+
+    $("#w0 .list_con_li li").each(function() 
+    {
+        var bm = {}
+        var li = $(this);
+
+        var a = li.children('a')
+        bm.name = a.attr("title")
+        bm.url = a.attr("href")
+        bm.logo = a.children('img').attr("src")
+        bm.author = li.children('p').eq(1).text()
+        bm.status = ""
+        bm.newSection = li.children('p').eq(2).text()
+        list.push(bm);
+    });
+
+    return JSON.stringify(list);
+}
+        ]]>
+        </code>
+    </script>
+</sited>
